@@ -11,7 +11,6 @@ class LoginForm extends Component {
 			email: "",
 			password: "",
 			error: "",
-			success: "",
 			loading: false
 		};
 
@@ -26,34 +25,25 @@ class LoginForm extends Component {
 			.then(this.onLoginSuccess.bind(this))
 			.catch (() => {
 				firebase.auth().createUserWithEmailAndPassword(email, password)
-				.then(this.onLoginSuccess.bind(this, true))
+				.then(this.onLoginSuccess.bind(this))
 				.catch (() => {
 					this.setState({ error: 'Authentication Failed.', loading: false })
 				})
 			});
 	}
 
-	onLoginSuccess(newAcct){
-		if (newAcct){
-			this.setState({
-				loading: false,
-				email: '',
-				password: '',
-				error: '',
-				success: 'You have created an account!'
-			})
-		}
+	onLoginSuccess(){
 		this.setState({
 			loading: false,
 			email: '',
 			password: '',
 			error: '',
-			success: 'Success!'
 		})
 	}
 
 	render(){
 		const {email, password, error, success, loading} = this.state;
+
 		return(
 			<Card>
 				<CardSection>
@@ -61,7 +51,7 @@ class LoginForm extends Component {
 						placeholder="user@gmail.com"
 						label="Email"
 						value={email}
-						onChangeText={text => this.setState({ email })}
+						onChangeText={email => this.setState({ email })}
 					/>
 				</CardSection>
 				<CardSection>
@@ -75,15 +65,12 @@ class LoginForm extends Component {
 				</CardSection>
 				<CardSection>
 				{(error != "")?
-				<Text style={styles.successTextStyle}>
-					{success}
-				</Text>
-				 :
 				<Text style={styles.errorTextStyle}>
 					{error}
-				</Text>
+				</Text> : null
 				}
-
+				</CardSection>
+				<CardSection>
 				{loading ?
 					<Spinner />
 					:
@@ -102,6 +89,8 @@ const styles = {
 		paddingTop: 10,
 		paddingBottom: 10,
 		fontSize: 20,
+		flex: 1,
+		textAlign: "center",
 		alignSelf: 'center',
 		color: 'red',
 		backgroundColor: "#fff"
@@ -110,6 +99,8 @@ const styles = {
 		paddingTop: 10,
 		paddingBottom: 10,
 		fontSize: 20,
+		textAlign: "center",
+		flex: 1,
 		alignSelf: 'center',
 		color: '#32CD32',
 		backgroundColor: "#fff"
