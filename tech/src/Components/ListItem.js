@@ -1,16 +1,39 @@
 import React, { Component } from 'react'
-import { Text } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { CardSection } from './common';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class ListItem extends Component {
+
+	renderDesc(){
+		const {library, expanded} = this.props
+		const {descStyle} = styles;
+		console.log(expanded)
+		if(expanded){
+			return (
+				<Text style={descStyle}>{library.item.description}</Text>
+			)
+		}
+	}
+
 	render(){
-		const {titleStyle, descStyle} = styles;
+		const {titleStyle} = styles;
+		const { id, title } = this.props.library.item;
+
 		return(
-			<CardSection>
-				<Text style={titleStyle}>
-					{this.props.library.item.title}
-				</Text>
-			</CardSection>
+			<TouchableWithoutFeedback
+				onPress={() => this.props.selectLibrary(id)}
+			>
+				<View>
+					<CardSection>
+						<Text style={titleStyle}>
+							{title}
+						</Text>
+					</CardSection>
+					{this.renderDesc()}
+				</View>
+			</TouchableWithoutFeedback>
 		)
 	}
 }
@@ -24,8 +47,18 @@ const styles = {
 	},
 	descStyle: {
 		fontSize: 15,
-		color: "#666666"
+		color: "#666666",
+		paddingTop: 15,
+		paddingBottom: 15,
+		paddingLeft: 20,
+		paddingRight: 20,
+		lineHeight: 20
 	}
 }
 
-export default ListItem;
+const mapStateToProps = (state, ownProps) => {
+	const expanded = state.selectedLibraryId === ownProps.library.item.id;
+	return { expanded };
+};
+
+export default connect(mapStateToProps, actions)(ListItem);
