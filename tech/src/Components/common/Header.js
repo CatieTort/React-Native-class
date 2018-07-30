@@ -16,7 +16,11 @@ const styles = {
 		paddingTop: 25,
 		justifyContent: 'center',
 		alignItems: 'center',
-		position: 'relative'
+		position: 'relative',
+		borderBottomWidth: 2,
+		borderStyle: "solid",
+		backgroundColor: "#5efdbf",
+		borderColor: "#2cfcab"
 
 	},
 	textStyle: {
