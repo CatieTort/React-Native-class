@@ -8,6 +8,7 @@ import LoginForm from './Components/LoginForm';
 import reducers from './reducers';
 import firebase from 'firebase';
 import {config} from './config';
+import Router from './Router';
 
 
 class App extends Component {
@@ -20,10 +21,7 @@ class App extends Component {
 
 		return(
 			<Provider store={store}>
-				<View>
-					<Header headerText="Employee Management" />
-					<LoginForm />
-				</View>
+				<Router />
 			</Provider>
 		)
 	}

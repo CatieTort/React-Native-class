@@ -77,10 +77,10 @@ const styles = {
 const mapStateToProps = state => {
 	const {email, password, error, loading} = state.auth
 	return {
-		email: email,
-		password: password,
-		error: error,
-		loading: loading
+		email,
+		password,
+		error,
+		loading
 	}
 }
 
