@@ -3,6 +3,7 @@ import { Stack, Scene, Router, Actions } from 'react-native-router-flux'
 import LoginForm from './Components/LoginForm'
 import EmployeeList from './Components/EmployeeList'
 import EmployeeCreate from './Components/EmployeeCreate'
+import EmployeeDetail from './Components/EmployeeDetail'
 
 const RouterComponent = () => {
 	const {viewStyle, addBtnStyle, addBtnText} = styles;
@@ -23,6 +24,11 @@ const RouterComponent = () => {
 						title="Employees"
 						initial
 					 />
+					 <Scene
+ 						key="employeeDetail"
+ 						component={EmployeeDetail}
+ 						title="Employee Details"
+ 					/>
 					<Scene
 						key="employeeCreate"
 						component={EmployeeCreate}
@@ -51,7 +57,8 @@ const styles = {
 		paddingBottom: 5,
 		paddingRight: 15,
 		paddingLeft: 15,
-		marginRight: 5
+		marginRight: 5,
+		marginTop: 5
 	},
 	addBtnText: {
 		color: '#F1FFE7',
