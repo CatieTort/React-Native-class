@@ -37,7 +37,6 @@ export const employeesFetch = () => {
 		.once('value')
 			.then((snapshot) => {
 				var data = snapshot.val()
-				console.log(data)
 				dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: data })
 			})
 	}

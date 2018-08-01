@@ -13,6 +13,7 @@ class EmployeeCreate extends Component {
 	}
 
 	render(){
+		console.log(this.props)
 		return (
 			<View>
 				<Card style={{borderWidth: 1, borderColor: "#28AFB0", borderStyle: "solid"}}>

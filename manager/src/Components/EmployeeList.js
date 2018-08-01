@@ -16,10 +16,10 @@ class EmployeeList extends Component {
 		console.log("the item:", item)
 		return (
 			<Card employee={item.uid} >
-				<CardSection style={{justifyContent: "space-evenly"}}>
+				<CardSection style={{justifyContent: "space-between"}}>
 					<Text style={employeeNameStyle}>{item.name}</Text>
 					<Container>
-						<Button onPress={() => Actions.employeeDetail({item: item})}>View</Button>
+						<Button onPress={() => Actions.employeeDetail({employee: item})}>View</Button>
 					</Container>
 				</CardSection>
 			</Card>

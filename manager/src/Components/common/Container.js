@@ -1,17 +1,18 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native'
 
-const Container = ({children}) => {
-	const { containerStyle } = styles
+
+const Container = (props) => {
 	return (
-		<View style={containerStyle}>
-			{children}
+		<View style={[styles.continerStyle, props.style]}>
+			{props.children}
 		</View>
 	)
 }
+
 const styles = {
-	containerStyle: {
-		
+	continerStyle: {
+		flexDirection: 'column'
 	}
 }
 

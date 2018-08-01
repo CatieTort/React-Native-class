@@ -5,7 +5,7 @@ const Card = (props) => {
 	const {containerStyle} = styles;
 
 	return (
-		<View style={containerStyle}>
+		<View style={[containerStyle, props.style]}>
 			{props.children}
 		</View>
 	)
