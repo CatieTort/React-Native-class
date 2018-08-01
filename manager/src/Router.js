@@ -4,6 +4,7 @@ import LoginForm from './Components/LoginForm'
 import EmployeeList from './Components/EmployeeList'
 import EmployeeCreate from './Components/EmployeeCreate'
 import EmployeeDetail from './Components/EmployeeDetail'
+import EmployeeEdit from './Components/EmployeeEdit'
 
 const RouterComponent = () => {
 	const {viewStyle, addBtnStyle, addBtnText} = styles;
@@ -30,6 +31,11 @@ const RouterComponent = () => {
  						title="Employee Details"
  					/>
 					<Scene
+					   key="employeeEdit"
+					   component={EmployeeEdit}
+					   title="Edit an Employee"
+				   />
+					<Scene
 						key="employeeCreate"
 						component={EmployeeCreate}
 						title="Add an Employee"
@@ -42,13 +48,12 @@ const RouterComponent = () => {
 
 const styles = {
 	viewStyle: {
-		height: 90,
+		height: 70,
 		borderBottomWidth: 4,
 		borderStyle: "solid",
 		backgroundColor: "#19647E",
 		borderBottomColor: "#28AFB0",
-		fontFamily: 'helvetica',
-		paddingBottom: 15
+		fontFamily: 'helvetica'
 	},
 	addBtnStyle: {
 		backgroundColor: "#15B097",

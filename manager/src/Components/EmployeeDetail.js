@@ -6,7 +6,7 @@ import { Card, CardSection, Button, Container } from './common'
 class EmployeeDetail extends Component {
 
 	onDetailPress(){
-		Actions.employeeCreate({employee: this.props.employee, title: "Edit an Employee"});
+		Actions.employeeEdit({employee: this.props.employee});
 	}
 
 	render(){
