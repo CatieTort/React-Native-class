@@ -1,20 +1,40 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Card, CardSection, Button } from './common'
+import { View, Text, FlatList } from 'react-native';
+import { connect } from 'react-redux'
+import { Card, CardSection, Button, Container } from './common'
 import { Actions } from 'react-native-router-flux'
+import { employeesFetch } from '../actions'
 
 class EmployeeList extends Component {
+	componentWillMount(){
+		this.props.employeesFetch();
+	}
+
+	renderItem({item}){
+		const {employeeNameStyle} = styles;
+		console.log("the item:", item)
+		return (
+			<Card employee={item.uid} >
+				<CardSection style={{justifyContent: "space-evenly"}}>
+					<Text style={employeeNameStyle}>{item.name}</Text>
+					<Container>
+						<Button onPress={() => Actions.employeeDetail({item: item})}>View</Button>
+					</Container>
+				</CardSection>
+			</Card>
+		)
+	}
 
 	render(){
-		const {employeeNameStyle} = styles;
+		console.log("in render:", this.props.employees);
 		return (
 			<View>
-				<Card>
-					<CardSection style={{justifyContent: "space-evenly"}}>
-						<Text style={employeeNameStyle}>Jill</Text>
-						<Button onPress={name => Actions.employeeDetail(name)}>View</Button>
-					</CardSection>
-				</Card>
+			<FlatList
+				data={this.props.employees}
+				renderItem={this.renderItem}
+				keyExtractor={(item, index) => item.uid}
+			/>
 			</View>
 		)
 	}
@@ -29,4 +49,12 @@ const styles = {
 	}
 }
 
-export default EmployeeList
+const mapStateToProps = state => {
+	const employees = _.map(state.employees, (val, uid) => {
+		return { ...val, uid };
+	})
+	console.log(employees)
+	return { employees };
+};
+
+export default connect(mapStateToProps, { employeesFetch })(EmployeeList)

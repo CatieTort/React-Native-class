@@ -5,20 +5,21 @@ import { Card, CardSection, Button } from './common'
 class EmployeeDetail extends Component {
 
 	render(){
+		const { item } = this.props
 		return (
 			<View>
 				<Card>
 					<CardSection>
-						<Text>Name:</Text>
+						<Text>Name: {item.name}</Text>
 					</CardSection>
 					<CardSection>
-						<Text>Title:</Text>
+						<Text>Title: {item.title}</Text>
 					</CardSection>
 					<CardSection>
-						<Text>Phone:</Text>
+						<Text>Phone: {item.phone}</Text>
 					</CardSection>
 					<CardSection>
-						<Text>Shift:</Text>
+						<Text>Shift: {item.shift}</Text>
 					</CardSection>
 				</Card>
 				<View>
