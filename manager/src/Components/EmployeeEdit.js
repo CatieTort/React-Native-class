@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { employeeUpdate, employeeSave, employeeDestroy } from '../actions'
+import { employeeUpdate, employeeSave} from '../actions'
 import { View } from 'react-native'
 import { Input, Button, Card, CardSection, Container } from './common'
 import EmployeeForm from './EmployeeForm';
@@ -31,13 +31,6 @@ class EmployeeEdit extends Component {
 							Save Changes
 						</Button>
 					</CardSection>
-					<CardSection>
-						<Button style={{marginTop: 0}}
-							onPress={this.onButtonPress.bind(this)}
-						>
-							Delete
-						</Button>
-					</CardSection>
 				</Card>
 			</View>
 		)
@@ -50,4 +43,4 @@ const mapStateToProps = (state) => {
 	return { name, title, phone, shift}
 }
 
-export default connect(mapStateToProps, {employeeUpdate, employeeSave, employeeDestroy})(EmployeeEdit)
+export default connect(mapStateToProps, {employeeUpdate, employeeSave})(EmployeeEdit)
