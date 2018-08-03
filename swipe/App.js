@@ -16,12 +16,24 @@ const DATA = [
 
 export default class App extends React.Component {
 
+	getData(){
+		return (
+			<Deck
+				data={DATA}
+				renderCard={this.renderCard}
+				renderNoMoreCards={this.renderNoMoreCards}
+			/>
+		)
+	}
+
 	renderCard(item){
 		return (
 			<Card
 				key={item.id}
 				title={item.text}
 				image={{uri: item.uri}}
+				containerStyle={{borderColor: '#7f7f7f'}}
+				wrapperStyle={{backgroundColor: '#c5ede3'}}
 			>
 				<Text style={{marginBottom: 10}}>I can customize you!</Text>
 				<Button
@@ -32,13 +44,28 @@ export default class App extends React.Component {
 		)
 	}
 
+	renderNoMoreCards(){
+		return (
+			<Card title='All Done!'
+				dividerStyle={{display: 'none'}}
+				wrapperStyle={{backgroundColor: '#c5ede3'}}
+				containerStyle={{borderColor: '#7f7f7f', backgroundColor: '#c5ede3'}}
+			>
+				<Text style={{marginBottom: 10, textAlign: 'center'}}>
+					You have reached the end!
+				</Text>
+				<Button
+					backgroundColor="teal"
+					title="Get More!"
+				/>
+			</Card>
+		)
+	}
+
   render() {
     return (
       <View style={styles.container}>
-        <Deck
-			data={DATA}
-			renderCard={this.renderCard}
-		/>
+        {this.getData()}
       </View>
     );
   }
@@ -48,5 +75,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightblue',
+	paddingTop: 20
   },
 });
