@@ -29,4 +29,4 @@ class ReviewJobs extends Component {
 	}
 }
 
-export { ReviewJobs }
+export default ReviewJobs

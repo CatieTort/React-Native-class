@@ -12,4 +12,4 @@ class Map extends Component {
 	}
 }
 
-export { Map }
+export default Map 

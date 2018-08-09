@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView, Dimensions } from 'react-native'
 import { Button } from 'react-native-elements'
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -13,6 +14,7 @@ class Slides extends Component {
 					style={[styles.slideStyle, {backgroundColor: slide.color}]}
 					key={slide.text}
 				>
+					{slide.icon ? <Entypo name={slide.icon.name} color={slide.icon.color} size={50} /> : null }
 					<Text style={styles.slideText}>{slide.text}</Text>
 					{ (index === this.props.data.length - 1)?
 						<Button
@@ -21,7 +23,6 @@ class Slides extends Component {
 							fontSize={20}
 							color='#fff'
 							backgroundColor='#bf35a7'
-							rounded
 							style={{marginTop: 20}}
 							onPress={this.props.onComplete}
 						/> : null }

@@ -12,4 +12,4 @@ class JobDeck extends Component {
 	}
 }
 
-export { JobDeck }
+export default JobDeck 
