@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import { FETCH_JOBS, GET_LAT_LONG } from './types';
-import config from '../config';
+import { KEY } from '../config';
 
 const JOB_QUERY_PARAMS = {
 	description: 'developer',
@@ -9,7 +9,6 @@ const JOB_QUERY_PARAMS = {
 };
 
 const URL = 'https://jobs.github.com/positions.json'
-const LOCATION_URL = `https://maps.googleapis.com/maps/api/geocode/json`
 
 export const fetchJobs = (region, callback) => async (dispatch) => {
 	const query = qs.stringify({ ...JOB_QUERY_PARAMS, lat: region.latitude, long: region.longitude });
@@ -25,16 +24,3 @@ export const fetchJobs = (region, callback) => async (dispatch) => {
 	}
 
 };
-
-export const fetchLatLog = (location) => async (dispatch) => {
-	const queryLoc = qs.stringify({location});
-	let coord
-	coord =  `${LOCATION_URL}?${queryLoc}key=${config}`;
-	console.log(coord)
-	try {
-		let { data } = await axios.get(location);
-		dispatch({ type: GET_LAT_LONG, payload: data });
-	} catch (e) {
-		console.log(e)
-	}
-}

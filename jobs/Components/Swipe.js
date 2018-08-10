@@ -90,7 +90,7 @@ class Swipe extends Component {
 
 	renderCards(){
 		const { index } = this.state
-		console.log(this.props.data)
+
 		if(index >= this.props.data.length){
 			return this.props.renderNoMoreCards()
 		}
@@ -137,6 +137,6 @@ export default Swipe
 const styles = {
 	cardStyle: {
 		position: 'absolute',
-		width: SCREEN_WIDTH,
+		width: SCREEN_WIDTH
 	}
 }

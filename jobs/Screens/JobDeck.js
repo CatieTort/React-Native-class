@@ -8,9 +8,12 @@ import * as actions from '../actions'
 
 class JobDeck extends Component {
 
-	// componentDidMount(){
-	// 	this.props.fetchLatLog(job.location)
-	// }
+	componentDidMount(){
+		let jobs = this.props.jobs
+		jobs.map((item) => {
+			return this.props.fetchLatLog(item.location)
+		})
+	}
 
 	renderCard(job){
 		return (
@@ -24,18 +27,26 @@ class JobDeck extends Component {
 				</Text>
 			</Card>
 		)
-	}
+	};
+
+	renderNoMoreCards(){
+		return (
+			<Card title='No More Jobs'></Card>
+		)
+	};
 
 
 
 	render(){
 		console.log('Jobs:', this.props.jobs)
+		console.log('Map:', this.props.map)
 		return (
 			<LinearGradient colors={['#51dfe1','#22c1c3','#22c39d']} style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
 			<View>
 				<Swipe
 					data={this.props.jobs}
 					renderCard={this.renderCard}
+					renderNoMoreCards={this.renderNoMoreCards}
 				 />
 			</View>
 			</LinearGradient>
@@ -43,8 +54,8 @@ class JobDeck extends Component {
 	}
 }
 
-const mapStateToProps = ({ jobs }) => {
-	return { jobs };
+const mapStateToProps = ({ jobs, map}) => {
+	return { jobs, map };
 }
 
 const styles = {
