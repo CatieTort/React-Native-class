@@ -5,15 +5,16 @@ import Slides from '../Components/Slides'
 import { AppLoading } from 'expo'
 
 const SLIDE_DATA = [
-	{text: 'Welcome to JobApp', color: '#22c1c3' },
-	{text: 'Set your location, then swipe through jobs!', color: '#00d4ff',  icon: { name:'location-pin', color:"#fff"} },
-	{text: 'Apply and get hired!', color: '#32cd32'}
+	{text: 'Welcome to JobApp', color: ['#51dfe1','#22c1c3','#22c39d'] },
+	{text: 'Set your location, then swipe through jobs!', color: ['#00ffea','#00d4ff','#0094ff'],  icon: { name:'location-pin', color:"#fff"} },
+	{text: 'Apply and get hired!', color: ['#70dc70','#32cd32','#28a428']}
 ];
 
 class Welcome extends Component {
 	state = { token: null }
 
 	async componentWillMount(){
+		// AsyncStorage.removeItem('fb_token');
 		let token = await AsyncStorage.getItem('fb_token');
 
 		if (token){

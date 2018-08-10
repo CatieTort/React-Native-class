@@ -39,7 +39,7 @@ export default class App extends React.Component {
 				}
 			}),
 			tabBarOptions: {
-				activeTintColor: '#32CD32',
+				activeTintColor: '#22c39d',
 				inactiveTintColor: '#fff',
 				showLabel: false,
 				activeBackgroundColor: '#5f6060',

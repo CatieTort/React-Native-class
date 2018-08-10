@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, ScrollView, Dimensions } from 'react-native'
 import { Button } from 'react-native-elements'
 import Entypo from 'react-native-vector-icons/Entypo';
+import { LinearGradient } from 'expo';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -11,21 +12,22 @@ class Slides extends Component {
 		return this.props.data.map((slide, index) => {
 			return(
 				<View
-					style={[styles.slideStyle, {backgroundColor: slide.color}]}
 					key={slide.text}
 				>
-					{slide.icon ? <Entypo name={slide.icon.name} color={slide.icon.color} size={50} /> : null }
-					<Text style={styles.slideText}>{slide.text}</Text>
-					{ (index === this.props.data.length - 1)?
-						<Button
-							title="Get Started"
-							raised
-							fontSize={20}
-							color='#fff'
-							backgroundColor='#bf35a7'
-							style={{marginTop: 20}}
-							onPress={this.props.onComplete}
-						/> : null }
+					<LinearGradient colors={slide.color}  style={styles.slideStyle}>
+						{slide.icon ? <Entypo name={slide.icon.name} color={slide.icon.color} size={50} /> : null }
+						<Text style={styles.slideText}>{slide.text}</Text>
+						{ (index === this.props.data.length - 1)?
+							<Button
+								title="Get Started"
+								raised
+								fontSize={20}
+								color='#fff'
+								backgroundColor='#bf35a7'
+								style={{marginTop: 20}}
+								onPress={this.props.onComplete}
+							/> : null }
+					</LinearGradient>
 				</View>
 			)
 		})

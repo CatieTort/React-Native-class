@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
 import * as actions from '../actions';
+import { LinearGradient } from 'expo';
 
 class Auth extends Component {
 
@@ -22,15 +23,16 @@ class Auth extends Component {
 
 	render(){
 		return (
-			<View style={styles.container}>
-				<Text style={{marginTop: 50}}>Auth</Text>
-			</View>
+			<LinearGradient colors={['#70dc70','#32cd32','#28a428']} style={styles.container}>
+				<View  />
+			</LinearGradient>
 		)
 	}
 }
 
 const styles = {
 	container: {
+		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
 	}
