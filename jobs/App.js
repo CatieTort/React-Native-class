@@ -55,7 +55,7 @@ export default class App extends React.Component {
     return (
 		<Provider store={store} >
 	      <View style={styles.container}>
-		  	<MainNavigator />
+		  		<MainNavigator />
 	      </View>
 		</Provider>
     );

@@ -90,7 +90,8 @@ class Swipe extends Component {
 
 	renderCards(){
 		const { index } = this.state
-
+		const { map } = this.props
+		console.log( "map in cards:", map)
 		if(index >= this.props.data.length){
 			return this.props.renderNoMoreCards()
 		}
@@ -107,7 +108,7 @@ class Swipe extends Component {
 						style={[this.getCardStyle(), styles.cardStyle, {zIndex: i * -1}]}
 						{...this.state.panResponder.panHandlers}
 					>
-						{this.props.renderCard(item)}
+						{this.props.renderCard(item, map)}
 					</Animated.View>
 				)
 			}
@@ -116,7 +117,7 @@ class Swipe extends Component {
 						key={item.id}
 						style={[styles.cardStyle, {zIndex: i * -1, top: 10 * (i - index)}]}
 					>
-						{this.props.renderCard(item)}
+						{this.props.renderCard(item, map)}
 					</Animated.View>
 				)
 		})
@@ -130,6 +131,8 @@ class Swipe extends Component {
 			)
 		}
 	}
+
+
 
 export default Swipe
 
