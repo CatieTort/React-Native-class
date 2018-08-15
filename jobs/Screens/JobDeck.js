@@ -8,6 +8,15 @@ import * as actions from '../actions'
 
 class JobDeck extends Component {
 
+	state = {
+		region: {
+			latitude: 0,
+			longitude: 0,
+			latitudeDelta: 0.65,
+			longitudeDelta: 0.48
+		}
+	}
+
 	componentDidMount(){
 		let jobs = this.props.jobs
 		jobs.map((item) => {
@@ -16,18 +25,19 @@ class JobDeck extends Component {
 	}
 
 	renderCard(job, map){
+
 		const jobRegion = {
-			latitude: map.lat,
-			longitude: map.lng,
-			latitudeDelta: 0.045,
-			longitudeDelta: 0.02
-		}
+					latitude: map.lat,
+					longitude: map.lng,
+					latitudeDelta: 0.045,
+					longitudeDelta: 0.02
+				}
 
 		return (
 			<Card>
 				<View style={{height: 300, marginBottom: 10}}>
 					<MapView
-						initialRegion={jobRegion}
+						region={jobRegion ? jobRegion : this.state.region}
 						scrollEnabled={false}
 						style={{flex: 1}}
 						cacheEnabled={Platform.OS === 'android' ? true : false }
@@ -56,8 +66,8 @@ class JobDeck extends Component {
 
 
 	render(){
-		console.log('Jobs:', this.props.jobs)
-		console.log('Map:', this.props.map)
+		// console.log('Jobs:', this.props.jobs)
+		// console.log('Map:', this.props.map)
 		return (
 			<LinearGradient colors={['#51dfe1','#22c1c3','#22c39d']} style={{ flex: 1}}>
 			<View style={{marginTop: 40}}>
