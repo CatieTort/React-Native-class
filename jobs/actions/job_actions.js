@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import { FETCH_JOBS, GET_LAT_LONG } from './types';
+import { FETCH_JOBS, LIKE_JOB, CLEAR_JOBS } from './types';
 import { KEY } from '../config';
 
 const JOB_QUERY_PARAMS = {
@@ -23,4 +23,19 @@ export const fetchJobs = (region, callback) => async (dispatch) => {
 		console.log(e);
 	}
 
+};
+
+
+export const likeJob = (job) => {
+	return{
+		payload: job,
+		type: LIKE_JOB
+	}
+};
+
+
+export const clearSavedJobs = () => {
+	return{
+		type: CLEAR_JOBS
+	}
 };

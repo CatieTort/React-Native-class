@@ -68,6 +68,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
 });
-
-
-// welcome > auth > Main flow > Map and deck, Review Flow > ReviewJobs, job deck & settings

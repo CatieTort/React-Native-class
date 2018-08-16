@@ -92,7 +92,7 @@ class Swipe extends Component {
 	renderCards(){
 		const { index } = this.state
 		const { map } = this.props
-		console.log( "map in cards:", map)
+		// console.log( "map in cards:", map)
 
 		if(index >= this.props.data.length){
 			return this.props.renderNoMoreCards()
