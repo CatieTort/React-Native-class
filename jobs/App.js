@@ -35,13 +35,13 @@ export default class App extends React.Component {
 					} else if (routeName === 'review'){
 						iconName =  'list';
 					}
-					return <FontAwesome name={iconName} size={25} color={tintColor} />
+					return <FontAwesome name={iconName} size={25}  style={{marginTop: 3}} color={tintColor} />
 				}
 			}),
 			tabBarOptions: {
+				labelStyle: {fontSize: 12},
 				activeTintColor: '#22c39d',
 				inactiveTintColor: '#fff',
-				showLabel: false,
 				activeBackgroundColor: '#5f6060',
 				inactiveBackgroundColor: '#5f6060',
 			}
