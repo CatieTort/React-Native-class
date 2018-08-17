@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { REHYDRATE } from 'redux-persist/constants';
+import { REHYDRATE } from 'redux-persist';
 import {
 	LIKE_JOB,
 	CLEAR_JOBS
